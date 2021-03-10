@@ -8,7 +8,7 @@ const cors = require("cors");
 
 const myCOS = require("ibm-cos-sdk");
 
-var i = process.env.JOB_INDEX;
+var i = 1; process.env.JOB_INDEX;
 console.log("my index is: " + i);
 
 getCosClient();
