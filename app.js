@@ -21,6 +21,7 @@ console.log("hello1");
 getCosClient();
 getItem("test1-bucket-code-engine", "test1.txt");
 console.log("hello2");
+console.log("my index is: " + process.env.JOB_INDEX);
 
 /**
  *Define Cloud OBject Storage client configuration
