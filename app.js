@@ -13,7 +13,7 @@ console.log("my index is: " + i);
 
 getCosClient();
 
-getItem("cos-bucket-ce1", "test"+i+"1.txt");
+getItem("cos-bucket-ce1", "test"+i+".txt");
 
 
 /**
