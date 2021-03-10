@@ -8,12 +8,12 @@ const cors = require("cors");
 
 const myCOS = require("ibm-cos-sdk");
 
-
-console.log("my index is: " + process.env.JOB_INDEX);
+i = process.env.JOB_INDEX;
+console.log("my index is: " + i);
 
 getCosClient();
 
-getItem("cos-bucket-ce1", "test1.txt");
+getItem("cos-bucket-ce1", "test"+i+"1.txt");
 
 
 /**
