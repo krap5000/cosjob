@@ -13,7 +13,7 @@ console.log("my index is: " + process.env.JOB_INDEX);
 
 getCosClient();
 
-getItem("test1-bucket-code-engine", "test1.txt");
+getItem("cos-bucket-ce1", "test1.txt");
 
 
 /**
