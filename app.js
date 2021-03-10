@@ -9,11 +9,12 @@ const cors = require("cors");
 const myCOS = require("ibm-cos-sdk");
 
 
-console.log("hello1");
-getCosClient();
-getItem("test1-bucket-code-engine", "test1.txt");
-console.log("hello2");
 console.log("my index is: " + process.env.JOB_INDEX);
+
+getCosClient();
+
+getItem("test1-bucket-code-engine", "test1.txt");
+
 
 /**
  *Define Cloud OBject Storage client configuration
