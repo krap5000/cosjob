@@ -19,6 +19,7 @@ const myCOS = require("ibm-cos-sdk");
 
 console.log("hello1");
 getCosClient();
+getItem("test1-bucket-code-engine", "test1.txt");
 console.log("hello2");
 
 /**
