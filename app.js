@@ -17,7 +17,9 @@ const cors = require("cors");
 const myCOS = require("ibm-cos-sdk");
 
 
-console.log("hello");
+console.log("hello1");
+getCosClient();
+console.log("hello2");
 
 /**
  *Define Cloud OBject Storage client configuration
