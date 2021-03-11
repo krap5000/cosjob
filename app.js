@@ -73,4 +73,16 @@ function createTextFile(bucketName, itemName, fileText) {
 }
 
 
-
+function deleteItem(bucketName, itemName) {
+    console.log(`Deleting item: ${itemName}`);
+    return cos.deleteObject({
+        Bucket: bucketName,
+        Key: itemName
+    }).promise()
+    .then(() =>{
+        console.log(`Item: ${itemName} deleted!`);
+    })
+    .catch((e) => {
+        console.error(`ERROR: ${e.code} - ${e.message}\n`);
+    });
+}
