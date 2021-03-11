@@ -57,5 +57,20 @@ function getItem(bucketName, itemName) {
 }
 
 
+function createTextFile(bucketName, itemName, fileText) {
+    console.log(`Creating new item: ${itemName}`);
+    return cos.putObject({
+        Bucket: bucketName, 
+        Key: itemName, 
+        Body: fileText
+    }).promise()
+    .then(() => {
+        console.log(`Item: ${itemName} created!`);
+    })
+    .catch((e) => {
+        console.error(`ERROR: ${e.code} - ${e.message}\n`);
+    });
+}
+
 
 
