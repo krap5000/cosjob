@@ -40,6 +40,7 @@ function getCosClient() {
 
 function getItem(bucketName, itemName) {
 	let cos = getCosClient();
+	var dBucketNmae = "cos-bucket-ce2";
     console.log(`Retrieving item from bucket: ${bucketName}, key: ${itemName}`);
     return cos.getObject({
         Bucket: bucketName, 
@@ -48,7 +49,21 @@ function getItem(bucketName, itemName) {
     .then((data) => {
         if (data != null) {
             console.log('File Contents: ' + Buffer.from(data.Body).toString());
-            return Buffer.from(data.Body).toString();
+            itemName = itemName + "_PROCESSED";
+	    console.log(`Creating new item: ${itemName}`);
+           cos.putObject({
+               Bucket: dbucketName, 
+                Key: itemName, 
+                Body: fileText
+             }).promise()
+             .then(() => {
+        console.log(`Item: ${itemName} created!`);
+    })
+    .catch((e) => {
+        console.error(`ERROR: ${e.code} - ${e.message}\n`);
+    });
+		
+	     //		return Buffer.from(data.Body).toString();
         }    
     })
     .catch((e) => {
