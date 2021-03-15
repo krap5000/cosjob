@@ -5,8 +5,7 @@ require("dotenv").config({
     silent: true
 });
 
-var i = 1;
-process.env.JOB_INDEX;
+var i = process.env.JOB_INDEX;
 console.log(" >>>>>>>>>> Instance with index: " + i + " started");
 
 
