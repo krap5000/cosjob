@@ -13,7 +13,7 @@ console.log(" >>>>>>>>>> Instance with index: " + i + " started");
 var sourceBucketName = process.env.SRC_BUCKET_NAME;
 var sourceFilenName = process.env.SRC_FILE_NAME + "_" + i + ".txt";
 var destBucketName = process.env.DEST_BUCKET_NAME;
-var destFileName = sourceFilenName + "_" + i + "_PROCESSED.txt";
+var destFileName = process.env.SRC_FILE_NAME + "_" + i + "_PROCESSED.txt";
 
 processItem(sourceBucketName, sourceFilenName);
 
