@@ -13,15 +13,17 @@ const myCOS = require("ibm-cos-sdk");
 var i = 1; process.env.JOB_INDEX;
 console.log("Instance with index: " + i + " started");
 
-var cc = getCosClient();
+/*var cc = getCosClient();
 if (cc == null) {
 
 	console.log("Failed obtaining CosClient");
-}
+}*/
 
 
 var sourceBucketName =  process.env.SRC_BUCKET_NAME ; 
-var sourceFilenName =  process.env.SRC_FILE_NAME ;
+var sourceFilenName =  process.env.SRC_FILE_NAME + "_" + i + ".txt";
+var destBucketName =  process.env.DEST_BUCKET_NAME ; 
+var destFilenName =  process.env.DEST_FILE_NAME + "_" + i +"_PROCESSED.txt" ;
 
 getItem( sourceBucketName, sourceFilenName ); //"cos-bucket-ce1", "test"+i+".txt");
 
@@ -50,7 +52,11 @@ function getCosClient() {
 
 function getItem(bucketName, itemName) {
 	let cos = getCosClient();
-	var dBucketName = "cos-bucket-ce2";
+	if (cos == null) {
+
+	console.log("Failed obtaining CosClient");
+}
+	//var dBucketName = "cos-bucket-ce2";
     console.log(`Retrieving item from bucket: ${bucketName}, key: ${itemName}`);
     return cos.getObject({
         Bucket: bucketName, 
@@ -60,10 +66,10 @@ function getItem(bucketName, itemName) {
         if (data != null) {
 		var fileText = Buffer.from(data.Body).toString();
             console.log('File Contents: ' + fileText);
-            itemName = itemName + "_PROCESSED";
+            itemName = destFileName;
 	    console.log(`Creating new item: ${itemName}`);
            cos.putObject({
-               Bucket: dBucketName, 
+               Bucket: destBucketName, 
                 Key: itemName, 
                 Body: fileText
              }).promise()
