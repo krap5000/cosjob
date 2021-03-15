@@ -40,7 +40,7 @@ function getCosClient() {
 
 function getItem(bucketName, itemName) {
 	let cos = getCosClient();
-	var dBucketNmae = "cos-bucket-ce2";
+	var dBucketName = "cos-bucket-ce2";
     console.log(`Retrieving item from bucket: ${bucketName}, key: ${itemName}`);
     return cos.getObject({
         Bucket: bucketName, 
