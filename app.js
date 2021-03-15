@@ -52,7 +52,7 @@ function getItem(bucketName, itemName) {
             itemName = itemName + "_PROCESSED";
 	    console.log(`Creating new item: ${itemName}`);
            cos.putObject({
-               Bucket: dbucketName, 
+               Bucket: dBucketName, 
                 Key: itemName, 
                 Body: fileText
              }).promise()
