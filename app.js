@@ -49,7 +49,7 @@ function getItem(bucketName, itemName) {
     .then((data) => {
         if (data != null) {
 		var fileText = Buffer.from(data.Body).toString();
-            console.log('File Contents: ' + fileText;
+            console.log('File Contents: ' + fileText);
             itemName = itemName + "_PROCESSED";
 	    console.log(`Creating new item: ${itemName}`);
            cos.putObject({
