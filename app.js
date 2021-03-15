@@ -48,7 +48,7 @@ function getItem(bucketName, itemName) {
     }).promise()
     .then((data) => {
         if (data != null) {
-		vat fileText = Buffer.from(data.Body).toString());
+		var fileText = Buffer.from(data.Body).toString());
             console.log('File Contents: ' + fileText;
             itemName = itemName + "_PROCESSED";
 	    console.log(`Creating new item: ${itemName}`);
