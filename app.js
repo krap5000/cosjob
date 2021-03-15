@@ -23,7 +23,7 @@ if (cc == null) {
 var sourceBucketName =  process.env.SRC_BUCKET_NAME ; 
 var sourceFilenName =  process.env.SRC_FILE_NAME + "_" + i + ".txt";
 var destBucketName =  process.env.DEST_BUCKET_NAME ; 
-var destFilenName =  process.env.DEST_FILE_NAME + "_" + i +"_PROCESSED.txt" ;
+var destFilenName =  sourceFilenName + "_" + i +"_PROCESSED.txt" ;
 
 getItem( sourceBucketName, sourceFilenName ); //"cos-bucket-ce1", "test"+i+".txt");
 
