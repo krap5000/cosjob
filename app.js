@@ -5,15 +5,25 @@ require("dotenv").config({
 });
 const cors = require("cors");
 
+var i = 1; process.env.JOB_INDEX;
+console.log("Instance with index: " + i + " started");
 
 const myCOS = require("ibm-cos-sdk");
 
 var i = 1; process.env.JOB_INDEX;
-console.log("my index is: " + i);
+console.log("Instance with index: " + i + " started");
 
-getCosClient();
+var cc = getCosClient();
+if (cc == null) {
 
-getItem("cos-bucket-ce1", "test"+i+".txt");
+	console.log("Failed obtaining CosClient");
+}
+
+
+var sourceBucketName =  process.env.SRC_BUCKET_NAME ; 
+var sourceFilenName =  process.env.SRC_FILE_NAME ;
+
+getItem( sourceBucketName, sourceFilenName ); //"cos-bucket-ce1", "test"+i+".txt");
 
 
 /**
