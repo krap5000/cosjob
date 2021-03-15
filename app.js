@@ -16,7 +16,7 @@ console.log("Instance with index: " + i + " started");
 /*var cc = getCosClient();
 if (cc == null) {
 
-	console.log("Failed obtaining CosClient");
+	console.log(" >>>>>>>>>> Failed obtaining CosClient");
 }*/
 
 
@@ -54,10 +54,10 @@ function getItem(bucketName, itemName) {
 	let cos = getCosClient();
 	if (cos == null) {
 
-	console.log("Failed obtaining CosClient");
+	console.log(" >>>>>>>>>> Failed obtaining CosClient");
 }
 	//var dBucketName = "cos-bucket-ce2";
-    console.log(`Retrieving item from bucket: ${bucketName}, key: ${itemName}`);
+    console.log(` >>>>>>>>>> Retrieving file from bucket: ${bucketName}, key: ${itemName}`);
     return cos.getObject({
         Bucket: bucketName, 
         Key: itemName
@@ -65,26 +65,26 @@ function getItem(bucketName, itemName) {
     .then((data) => {
         if (data != null) {
 		var fileText = Buffer.from(data.Body).toString();
-            console.log('File Contents: ' + fileText);
+            console.log(' >>>>>>>>>> File Contents: ' + fileText);
             itemName = destFileName;
-	    console.log(`Creating new item: ${itemName}`);
+	    console.log(` >>>>>>>>>> Putting processed file: ${itemName}`);
            cos.putObject({
                Bucket: destBucketName, 
                 Key: itemName, 
                 Body: fileText
              }).promise()
              .then(() => {
-        console.log(`Item: ${itemName} created!`);
+        console.log(` >>>>>>>>>> File: ${itemName} put!`);
     })
     .catch((e) => {
-        console.error(`ERROR: ${e.code} - ${e.message}\n`);
+        console.error(` >>>>>>>>>> ERROR: ${e.code} - ${e.message}\n`);
     });
 		
 	     //		return Buffer.from(data.Body).toString();
         }    
     })
     .catch((e) => {
-        console.error(`ERROR: ${e.code} - ${e.message}\n`);
+        console.error(` >>>>>>>>>> ERROR: ${e.code} - ${e.message}\n`);
     });
 }
 
@@ -97,7 +97,7 @@ function createTextFile(bucketName, itemName, fileText) {
         Body: fileText
     }).promise()
     .then(() => {
-        console.log(`Item: ${itemName} created!`);
+        console.log(` >>>>>>>>>> File: ${itemName} put!`);
     })
     .catch((e) => {
         console.error(`ERROR: ${e.code} - ${e.message}\n`);
