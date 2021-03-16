@@ -9,6 +9,7 @@
   "author": "RPB",
   "license": "Public",
   "dependencies": {
+    "@cloudant/cloudant": "^4.3.0",
     "atob": "^2.1.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
